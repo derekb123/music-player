@@ -10,8 +10,71 @@ const cover = document.querySelector('#cover');
 const songListContainer = document.querySelector('.song-list-container');
 // const songListItem = document.createElement('li');
 
+
+//UI Class: Display UI Items
+class UI {
+
+  static addSongToList(song) {
+    const list = document.querySelector('.song-list-container');
+    const row = document.createElement('div');
+
+    row.classList('song-item')
+
+    row.innerHTML = `
+    <div>${song.title}</div>
+    <div>${song.duration}</div>
+    `
+  }
+
+  static displaySongs() {
+    songs.forEach((song) => UI.addSongToList(song));
+  }
+}
+
+
+//Song Class
+class Song {
+  constructor(title) {
+    this.title = title;
+    this.image = 'general.jpeg';
+    this.mp3 = 'general.mp3';
+    this.likes = 0;
+    this.dislikes = 0;
+  }
+
+  //Like a song
+  likeSong(){
+    this.likes ++;
+  }
+
+  //Dislike a song
+  dislikeSong(){
+    this.dislikes ++;
+  }
+
+  //Get likes
+  getLikes(){
+    return this.likes;
+  }
+
+  //Get dislikes
+  getdisLikes(){
+    return this.dislikes;
+  }
+
+  //Edit Song Title
+  editSongTitle(newTitle){
+    this.title = newTitle;
+  }
+
+  //Edit Song Image
+  editSongImage(newImage){
+    this.image = newImage;
+  }
+}
+
 //Song Titles Array
-const songs = ['cali', 'wake-up', 'true-love'];
+const songs = ['cali', 'wake-up', 'general'];
 
 //Keep Track of Songs
 let songIndex = 0;
